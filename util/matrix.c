@@ -26,7 +26,7 @@ void create_matrix(Matrix *m, int nrow, int ncol) {
     }
 }
 
-void populate_matrix(Matrix *m) {
+void llenar_matriz(Matrix *m) {
     int i, j;
     for(i = 0; i < m->nrow; i++){
         for(j = 0; j < m->ncol; j++){

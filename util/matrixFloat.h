@@ -12,7 +12,7 @@ struct struct_matrix {
 typedef struct struct_matrix Matrix; 
 
 void create_matrix(Matrix *m, int nrow, int ncol);
-void populate_matrix(Matrix *m);
+void llenar_matriz(Matrix *m);
 void print_matrix(Matrix *m, char iden);
 void shift_matrix_left(Matrix *m, int block_sz, int initial);
 void shift_matrix_up(Matrix *m, int block_sz, int initial);
