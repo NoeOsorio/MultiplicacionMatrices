@@ -3,13 +3,18 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-#include "util/matrix.h"
 #include <sys/time.h>
 
+// Modifica esto para el tamaño de matriz
 #define N 2000
+#define TRUE 1
+#define FALSE 0
 
 void imprimematriz(int *matriz, int n);
 void MatrixMultiply(int n, int *a, int *b, int *c);
+int* create_array_as_matrix(int r, int c);
+void populate_array_as_matrix(int *arr, int r, int c);
+int array_as_matrix_equals(int *a, int *b, int r, int c);
 
 int *a;
 int *b;
@@ -198,54 +203,54 @@ int main(int argc, char *argv[])
 
 
         double end = MPI_Wtime();
-        printf("\nTiempo Cannon: %.4f segundos\n", (end - start));
+        // printf("\nTiempo Cannon: %.4f segundos\n", (end - start));
         gettimeofday(&stop, 0);
-        fprintf(stdout, "Time = %.6f\n\n",
+        fprintf(stdout, "%.8f\n",
                 (stop.tv_sec + stop.tv_usec * 1e-6) - (start2.tv_sec + start2.tv_usec * 1e-6));
 
 
 
 
 
-        /* -----SECUENCIAL------ */
+        // /* -----SECUENCIAL------ */
+        // /* SOLO PARA COMPROBAR */
+
+        // int *d = create_array_as_matrix(N, N);
+        // /* Mide el tiempo del algoritmo secuencial */
+        // gettimeofday(&start2, 0);
+        // start = MPI_Wtime();
+        // MatrixMultiply(N, a, b, d);
+        // /* Si queremos podemos imprimirla */
+        // //    imprimematriz(&d[0], N);
+        // printf("Cannon \n\n");
+        // //    imprimematriz(&c[0], N);
+
+        // int equal = array_as_matrix_equals(&d[0], &c[0], N, N);
+        // /* Este punto es importantisimo
+
+        //     Se evalua si efectivamente las dos matrices (Cannon y Secuencial)
+        //     estan dando el mismo resultado.
 
 
-        int *d = create_array_as_matrix(N, N);
-        /* Mide el tiempo del algoritmo secuencial */
-        gettimeofday(&start2, 0);
-        start = MPI_Wtime();
-        MatrixMultiply(N, a, b, d);
-        /* Si queremos podemos imprimirla */
-        //    imprimematriz(&d[0], N);
-        printf("Cannon \n\n");
-        //    imprimematriz(&c[0], N);
-
-        int equal = array_as_matrix_equals(&d[0], &c[0], N, N);
-        /* Este punto es importantisimo
-
-            Se evalua si efectivamente las dos matrices (Cannon y Secuencial)
-            estan dando el mismo resultado.
-
-
-         */
-        if (equal)
-        {
-            /* Si son iguales, quiere decir que cannon esta bien ejecutado 
+        //  */
+        // if (equal)
+        // {
+        //     /* Si son iguales, quiere decir que cannon esta bien ejecutado 
             
-                y Muestra el tiempo del Algoritmo secuencial
+        //         y Muestra el tiempo del Algoritmo secuencial
             
-             */
-            printf("\nSon iguales\n");
-            end = MPI_Wtime();
-            printf("\nTiempo Secuencial: %.4f segundos\n", (end - start));
-            gettimeofday(&stop, 0);
-            fprintf(stdout, "Time = %.6f\n\n",
-                    (stop.tv_sec + stop.tv_usec * 1e-6) - (start2.tv_sec + start2.tv_usec * 1e-6));
-        }
-        else
-        {
-            printf("\n No son iguales\n");
-        }
+        //      */
+        //     printf("\nSon iguales\n");
+        //     end = MPI_Wtime();
+        //     printf("\nTiempo Secuencial: %.4f segundos\n", (end - start));
+        //     gettimeofday(&stop, 0);
+        //     fprintf(stdout, "Time = %.6f\n\n",
+        //             (stop.tv_sec + stop.tv_usec * 1e-6) - (start2.tv_sec + start2.tv_usec * 1e-6));
+        // }
+        // else
+        // {
+        //     printf("\n No son iguales\n");
+        // }
     }
 
     MPI_Finalize();
@@ -263,7 +268,7 @@ void populate_array_as_matrix(int *arr, int r, int c)
     int j;
     for (j = 0; j < r * c; j++)
     {
-        arr[j] = rand() % 10 + 1;
+        arr[j] = rand() % 2000 + 1000;
     }
 }
 

@@ -3,13 +3,18 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-#include "util/matrix.h"
+// #include "util/matrix.h"
 #include <sys/time.h>
 
 #define N 2000
+#define TRUE 1
+#define FALSE 0
 
 void imprimematriz(int *matriz, int n);
 void MatrixMultiply(int n, int *a, int *b, int *c);
+int* create_array_as_matrix(int r, int c);
+void populate_array_as_matrix(int *arr, int r, int c);
+int array_as_matrix_equals(int *a, int *b, int r, int c);
 
 int *a;
 int *b;
