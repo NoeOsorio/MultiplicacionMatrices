@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.js": "javascriptreact",
+        "mpi.h": "c"
+    }
+}
