@@ -6,7 +6,7 @@
 #include <sys/time.h>
 
 // Modifica esto para el tamaño de matriz
-#define N 2048
+#define N 1024
 #define TRUE 1
 #define FALSE 0
 

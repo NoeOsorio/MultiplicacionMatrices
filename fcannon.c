@@ -6,9 +6,10 @@
 #include <sys/time.h>
 
 // Modifica esto para el tamaño de matriz
-#define N 2048
+#define N 1024
 #define TRUE 1
 #define FALSE 0
+#define P 16
 
 void imprimematriz(double *matriz, int n);
 void MatrixMultiply(int n, double *a, double *b, double *c);
@@ -20,9 +21,9 @@ double *a;
 double *b;
 double *c;
 
-double bloque_a[4][N * N];
-double bloque_b[4][N * N];
-double bloque_c[4][N * N];
+double bloque_a[P][N * N];
+double bloque_b[P][N * N];
+double bloque_c[P][N * N];
 
 void MatrixMatrixMultiply(int n, double *a, double *b, double *c, double *c_grande, MPI_Comm comm)
 {
